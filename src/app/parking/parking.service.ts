@@ -9,6 +9,7 @@ export class ParkingService {
   url:string = 'http://localhost:8080';
   pathIngresoParqueadero:string = '/api/ingreso';
   patchConsultaVehiculos:string = '/api/consulta';
+  pathSalidaParqueadero:string = '/api/salida';
 
   constructor(private http: HttpClient) { }
 
@@ -19,4 +20,8 @@ export class ParkingService {
   consultaVehiculos(){
     return this.http.get(this.url+this.patchConsultaVehiculos);
   }
+
+  salidaVehiculo(vehiculo:any){
+    return this.http.post(this.url+this.pathSalidaParqueadero, vehiculo);
+  }  
 }

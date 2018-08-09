@@ -5,19 +5,25 @@
       <div class="input-group-prepend">
         <span class="input-group-text"></span>
       </div>
-      <input type="text" class="form-control" placeholder="Placa">
+      <input type="text" class="form-control" placeholder="Placa" [(ngModel)]="inputPlaca" (keyup)="actualizaVacios()">
     </div>
     ó
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text"></span>
       </div>
-      <input type="text" class="form-control" placeholder="Ticket">
+      <input type="text" class="form-control" placeholder="Ticket" [(ngModel)]="inputTicket" (keyup)="actualizaVacios()">
+    </div>
+    <div class="input-group" *ngIf="camposVacios">
+      <br>
+      <mat-error>
+          Para registrar la salida de un vehiculo debe ingresar la placa o el ticket
+      </mat-error>    
     </div>
     <br>
     <div class="row w-100">
       <div class="mx-auto">
-        <button class="btn">Registrar salida</button>
+        <button mat-raised-button [disabled]="inputPlaca.length==0 && inputTicket.length==0" (click)="registrarSalida()">Registrar salida</button>
       </div>
     </div>
 </div>

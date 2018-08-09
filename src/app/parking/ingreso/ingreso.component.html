@@ -8,7 +8,7 @@
           [errorStateMatcher]="matcher">
           <mat-error *ngIf="ingresoForm.hasError('required', 'placa')">
               Por favor ingrese placa
-            </mat-error>
+          </mat-error>
       </mat-form-field>
     </div>
     <div class="input-group mt-1" *ngIf="esMotocicleta">
@@ -30,7 +30,7 @@
     <br>
     <div class="row w-100">
       <div class="mx-auto">
-        <button class="btn" [disabled]="ingresoForm.invalid" (click)="registrarIngreso()">Registrar ingreso</button>
+        <button mat-stroked-button [disabled]="ingresoForm.invalid" (click)="registrarIngreso()">Registrar ingreso</button>
       </div>
     </div>
   </div>

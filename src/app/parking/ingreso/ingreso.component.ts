@@ -3,9 +3,9 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { ParkingService } from '../parking.service';
 
-import { ModalContentComponent } from '../../shared/modal-content/modal-content.component'
+import { ParkingService } from '../parking.service';
+import { ModalContentComponent } from '../../shared/modal-content/modal-content.component';
 
 @Component({
   selector: 'app-ingreso',

@@ -1,41 +1,55 @@
 <div class="text-center">
   <h3>Vehiculos parqueados</h3>
+  <a (click)="loadVehiculos()">
+    Refrescar 
+    <img src="/assets/img/reload.svg" class="refresh">
+  </a>
+  <br>
   <br>
 </div>
 <div class="table-responsive w-100">
+  <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+      </mat-form-field>
+    </div>
   <table mat-table [dataSource]="vehiculos" matSort class="w-100">
 
     <!-- Columna Numero -->
     <ng-container matColumnDef="NO">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
-      <td mat-cell *matCellDef="let element"> - </td>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+      <mat-cell *matCellDef="let element"> - </mat-cell>
     </ng-container>
 
     <!-- Columna Ticket -->
     <ng-container matColumnDef="ticket">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket </th>
-      <td mat-cell *matCellDef="let element"> {{element.ticket}} </td>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ticket </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ticket}} </mat-cell>
     </ng-container>
 
     <!-- Columna Placa -->
     <ng-container matColumnDef="placa">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Placa </th>
-      <td mat-cell *matCellDef="let element"> {{element.placa}} </td>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Placa </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.placa}} </mat-cell>
     </ng-container>
     
     <!-- Columna Tipo Vehiculo -->
     <ng-container matColumnDef="tipo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Vehículo </th>
-      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Vehículo </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.tipo}} </mat-cell>
     </ng-container>
 
-    <!-- Columna Numero -->
+    <!-- Columna Fecha de Ingreso -->
     <ng-container matColumnDef="fechaIngreso">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ingreso </th>
-      <td mat-cell *matCellDef="let element"> {{element.fechaIngreso}} </td>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ingreso </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fechaIngreso | formatoIngreso}} </mat-cell>
     </ng-container>      
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </table>
+  <mat-paginator [length]="longitud"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
 </div>

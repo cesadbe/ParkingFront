@@ -11,9 +11,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
-import { ModalContentComponent } from './modal-content/modal-content.component'
+import { ModalContentComponent } from './modal-content/modal-content.component';
+import { FormatoIngresoPipe } from './pipe/formato-ingreso.pipe'
 
 @NgModule({
   imports: [
@@ -29,9 +32,11 @@ import { ModalContentComponent } from './modal-content/modal-content.component'
     MatGridListModule,
     MatTableModule,
     MatSortModule,
+    MatPaginatorModule,
+    MatButtonModule,
     ModalModule.forRoot()
   ],
-  declarations: [ModalContentComponent],
+  declarations: [ModalContentComponent, FormatoIngresoPipe],
   entryComponents: [ ModalContentComponent ],
   exports: [FormsModule, 
     ReactiveFormsModule, 
@@ -41,8 +46,11 @@ import { ModalContentComponent } from './modal-content/modal-content.component'
     MatCardModule, 
     MatGridListModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    FormatoIngresoPipe
   ],
-  providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}]
+  providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}, FormatoIngresoPipe]
 })
 export class SharedModule { }
